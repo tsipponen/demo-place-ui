@@ -12,18 +12,62 @@ export type Meta = {
 
 export type Data = {
     id: string;
-    name?: any;
-    source_type?: any;
-    info_url?: any;
-    modified_at?: any;
-    location?: any;
-    description?: any;
-    tags?: any;
-    opening_hours?: any;
-    openinghours_exception?: any;
+    name: Name;
+    source_type: SourceType;
+    info_url: string;
+    modified_at: string;
+    location: Location;
+    description: Description;
+    tags: any;
+    opening_hours: Hours[];
+    openinghours_exception: string;
 }
 export type Tags = {
     any: any;
 }
 
+export type Name = {
+    fi: string;
+    en: string;
+    sv: string;
+    zh: string;
+}
+export type SourceType = {
+    id: number;
+    name: string;
+}
 
+export type Location = {
+    lat: number;
+    lon: number;
+    address: Address;
+}
+
+export type Address = {
+    street_address: string;
+    postal_code: string;
+    locality: string;
+}
+
+export type Description = {
+    intro: string;
+    body: string;
+    images: Image[];
+}
+export type Image = {
+    url: string;
+    copyright_holder: string;
+    license_type: LicenseType;
+}
+
+export type LicenseType = {
+    id: string;
+    name: string;
+}
+
+export type Hours = {
+    weekday_id: number;
+    opens: string;
+    closes: string;
+    open24h: boolean;
+}

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PlaceService } from './place.service'
-import { Place } from './types'
+import { Data } from './types'
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { Place } from './types'
 })
 export class AppComponent {
   title = 'places-ui';
-  places: any;
+  places?: Data[];
   constructor(private service: PlaceService)
   {
    
@@ -18,6 +18,6 @@ export class AppComponent {
   ngOnInit(): void
   {
     this.service.getPlaces().subscribe(data => {
-      this.places = Array.of(data)});
+      this.places = data.data});
   }
 }
