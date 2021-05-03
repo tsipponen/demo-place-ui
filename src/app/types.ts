@@ -19,7 +19,7 @@ export type Data = {
     location: Location;
     description: Description;
     tags: any;
-    opening_hours: Hours[];
+    opening_hours: OpeningHours;
     openinghours_exception: string;
 }
 export type Tags = {
@@ -65,6 +65,9 @@ export type LicenseType = {
     name: string;
 }
 
+export type OpeningHours = {
+    hours: Hours[];
+}
 export type Hours = {
     weekday_id: number;
     opens: string;
