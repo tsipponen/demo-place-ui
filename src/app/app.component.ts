@@ -21,7 +21,6 @@ export class AppComponent {
     this.service.getPlaces().subscribe(data => {
       this.places = data.data;
       this.date = new Date();
-      this.date.setHours(17);
     });
   }
 
