@@ -1,0 +1,10 @@
+<mat-selection-list>
+    <mat-list-item *ngFor="let data of dataList | paginate:{itemsPerPage: 10, currentPage:p}">
+      {{data.name.fi}} | {{data.location.address.street_address}}, {{data.location.address.postal_code}} {{data.location.address.locality}} | Open: {{isPlaceOpen(data.opening_hours, date)}}
+    </mat-list-item>
+  </mat-selection-list>
+
+  <div id="pagination">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>   
+

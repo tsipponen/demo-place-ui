@@ -1,2 +1,6 @@
-<li *ngFor="let obj of places">Name: {{obj.name.fi}}, address: {{obj.location.address.street_address}}, {{obj.location.address.postal_code}} {{obj.location.address.locality}}. Open: {{isPlaceOpen(obj.opening_hours, date)}}</li>
+<place-list [dataList] = "places"></place-list>
+
+
+
+
 

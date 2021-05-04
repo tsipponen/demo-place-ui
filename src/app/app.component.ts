@@ -1,51 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PlaceService } from './place.service'
-import { Data, OpeningHours } from './types'
+import { Data } from './types'
+import { PlaceListComponent } from './place-list/place-list.component'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
   title = 'places-ui';
   places!: Data[];
-  date!: Date;
+  list!: PlaceListComponent;
+
   constructor(private service: PlaceService)
   {
-   
   }
 
   ngOnInit(): void
   {
     this.service.getPlaces().subscribe(data => {
-      this.places = data.data;
-      this.date = new Date();
+      this.places = data.data
     });
   }
 
-  isPlaceOpen(opening_hours: OpeningHours, date: Date): boolean
-  {
-    if(opening_hours.hours === null)
-    {
-      return false;
-    }
-    let dayNumber = date.getDay();
-    if(dayNumber === 0)
-    {
-      dayNumber = 7;
-    }
-
-    if(opening_hours.hours[dayNumber].open24h)
-    {
-      return true;
-    }
-    else
-    {
-      let dateHours = date.getHours();
-      return (dateHours > parseInt(opening_hours.hours[dayNumber].opens) 
-      && dateHours < parseInt(opening_hours.hours[dayNumber].closes) 
-      ? true : false)
-    }
-  }
+ 
 }
